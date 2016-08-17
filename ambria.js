@@ -41,12 +41,13 @@ function mod(name, moduleSkeleton) {
         register(name, moduleSkeleton);
 
         //chain function
-        return {
-            module: this.module,
-            get: function() {
-                return moduleSkeleton;
-            }
-        };
+        // return {
+        //     module: this.module,
+        //     get: function() {
+        //         return moduleSkeleton;
+        //     }
+        // };
+        return createChain(name, moduleSkeleton);
     }
 
     //getting the function which will build the module
@@ -81,12 +82,23 @@ function mod(name, moduleSkeleton) {
     register(name, module);
 
     //chain function
-    return {
-        module: this.module,
-        get: function() {
-            return module;
-        }
-    };
+    return createChain(name, module);
+}
+
+function createChain(name, registeredModule) {
+    if (registeredModule.module) {
+        console.warn('the module', name,'already has a module attribute. call "get" function on this to retrieve the module');
+        return {
+            module: mod,
+            get: function() {
+                return registeredModule;
+            }
+        };
+    }
+    else {
+        registeredModule.module = mod;
+        return registeredModule;
+    }
 }
 
 

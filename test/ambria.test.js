@@ -17,6 +17,8 @@ describe('ambria', function() {
         delete require.cache['/home/jonathan/Projects/ambria/test/ressource/one.module.js'];
         delete require.cache['/home/jonathan/Projects/ambria/test/ressource/two.module.js'];
         delete require.cache['/home/jonathan/Projects/ambria/test/ressource/three.module.js'];
+        delete require.cache[require.resolve('lodash')];
+
         ambria.unregisterModule('lodash');
         ambria.unregisterModule('one');
         ambria.unregisterModule('two');
@@ -30,8 +32,8 @@ describe('ambria', function() {
          */
         it('lazy injection test', function () {
             ambria.module('lodash', require('lodash'));
-            let one = require('./ressource/one.module').get();
-            let two = require('./ressource/two.module').get();
+            let one = require('./ressource/one.module');
+            let two = require('./ressource/two.module');
 
             assert(one.test1());
             assert.deepEqual(one.testlodash(), {a:0,b:1});
