@@ -4,9 +4,9 @@
 
 "use strict";
 
-let ambira = require('../../ambira');
+let ambria = require('../../ambria');
 
-module.exports = ambira.module('two',[
+module.exports = ambria.module('two',[
     'one',
     function(one) {
 

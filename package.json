@@ -2,7 +2,7 @@
   "name": "ambria",
   "version": "1.0.0",
   "description": "node dependency injector",
-  "main": "ambira.js",
+  "main": "ambria.js",
   "directories": {
     "test": "test"
   },
