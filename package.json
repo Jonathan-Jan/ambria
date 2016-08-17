@@ -1,0 +1,20 @@
+{
+  "name": "ambria",
+  "version": "1.0.0",
+  "description": "node dependency injector",
+  "main": "ambira.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "lodash": "^4.15.0"
+  },
+  "devDependencies": {
+    "assert": "^1.4.1"
+  },
+  "scripts": {
+    "test": "mocha test"
+  },
+  "author": "Jonathan Jan",
+  "license": "MIT"
+}
