@@ -8,13 +8,19 @@ let ambria = require('../../ambria');
 
 module.exports = ambria.module('two',[
     'one',
-    function(one) {
+    'lodash',
+    function(one, lodash) {
 
         function testGetOne(){
             return one;
         }
 
+        function testLodash() {
+            return lodash;
+        }
+
         return {
-            testGetOne: testGetOne
+            testGetOne: testGetOne,
+            testLodash:testLodash
         }
     }]);
