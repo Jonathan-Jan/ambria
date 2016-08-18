@@ -43,6 +43,7 @@ describe('ambria', function() {
             assert(ambria.module('lodash').assignIn);
             assert(ambria.module('one').testlodash);
             assert(ambria.module('two').testGetOne);
+            assert(ambria.module('two').testLodash().assignIn);
         });
 
         it('chained injection test', function () {
@@ -53,6 +54,15 @@ describe('ambria', function() {
             assert(ambria.module('lodash').assignIn);
             assert(ambria.module('three').test1());
         });
+
+        it('autobinding test', function() {
+            ambria.module('lodash', require('lodash'));
+            require('./ressource/one.module');
+            let autobinding = require('./ressource/autobinding.module');
+
+            assert(autobinding.testGetOne().test1);
+            assert(autobinding.testLodash().assignIn);
+        })
     });
 
     describe('#inject() Error', function () {

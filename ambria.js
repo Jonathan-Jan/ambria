@@ -62,6 +62,7 @@ function mod(name, moduleSkeleton) {
     //getting dependecies...
     let params = [];
     let missing = [];
+    moduleSkeleton = moduleSkeleton.length > 0 ? moduleSkeleton : getParamNames(func);
     moduleSkeleton.forEach(name => {
 
         let module = modules[name];
@@ -99,6 +100,22 @@ function createChain(name, registeredModule) {
         registeredModule.module = mod;
         return registeredModule;
     }
+}
+
+let STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
+let ARGUMENT_NAMES = /([^\s,]+)/g;
+/**
+ * Retrieve parameter name from a function
+ * thanks to http://stackoverflow.com/questions/1007981/how-to-get-function-parameter-names-values-dynamically-from-javascript
+ * @param func
+ * @returns {Array|{index: number, input: string}}
+ */
+function getParamNames(func) {
+    var fnStr = func.toString().replace(STRIP_COMMENTS, '');
+    var result = fnStr.slice(fnStr.indexOf('(')+1, fnStr.indexOf(')')).match(ARGUMENT_NAMES);
+    if(result === null)
+        result = [];
+    return result;
 }
 
 
