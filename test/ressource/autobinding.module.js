@@ -1,5 +1,5 @@
 /**
- * Created by jonathan on 17/08/16.
+ * Created by jonathan on 18/08/16.
  */
 
 "use strict";
@@ -7,8 +7,7 @@
 let ambria = require('../../ambria');
 
 module.exports = ambria.module('two',[
-    'one',
-    'lodash',
+
     function(one, lodash) {
 
         function testGetOne(){
@@ -23,4 +22,5 @@ module.exports = ambria.module('two',[
             testGetOne: testGetOne,
             testLodash:testLodash
         }
-    }]);
+    }
+]);
