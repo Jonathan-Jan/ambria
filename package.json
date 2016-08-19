@@ -1,6 +1,6 @@
 {
   "name": "ambria",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "node dependency injector",
   "main": "ambria.js",
   "directories": {
