@@ -16,5 +16,17 @@
     "test": "mocha test"
   },
   "author": "Jonathan Jan",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jonathan-Jan/ambria.git"
+  },
+  "keywords": [
+    "injection",
+    "dependency"
+  ],
+  "bugs": {
+    "url": "https://github.com/Jonathan-Jan/ambria/issues"
+  },
+  "homepage": "https://github.com/Jonathan-Jan/ambria#readme"
 }
