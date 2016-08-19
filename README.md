@@ -1,7 +1,7 @@
 # Ambria
 
-A easy to use dependency injector for NodeJS application.
-To work, Ambria need you to develop your module in a particular way (quite similar to an angular controller)
+An easy to use dependency injector for NodeJS application.
+To work, Ambria need you to develop your module in a particular way (quite similar to an angular controller). You will just have to add a small amount of code in your module declaration.
 
 ## Installation
 ```
@@ -60,6 +60,8 @@ ambria.module('lodash', require('lodash'));
 require('./ressource/one.module')
 
 ```
+
+For more example, you can read the tests
 
 ## Use
 Ambria is based on a unique function "module". which return a loaded module. It can be used in four way.
