@@ -20,7 +20,7 @@ here's a quick exemple of how to use Ambria and what should you change in your a
 ```javascript
 "use strict";
 
-let ambria = require('../../ambria');
+let ambria = require('ambria');
 
 module.exports = 
     // Call ambria.module function to register this has a new module.
@@ -50,7 +50,7 @@ module.exports =
 ```javascript
 "use strict";
 
-let ambria = require('../ambria');
+let ambria = require('ambria');
 
 // register lodash into Ambria
 ambria.module('lodash', require('lodash'));
