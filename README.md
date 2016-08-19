@@ -3,6 +3,11 @@
 A easy to use dependency injector for NodeJS application.
 To work, Ambria need you to develop your module in a particular way (quite similar to an angular controller)
 
+## Installation
+```
+npm install ambria
+```
+
 ## Features 
 
  * "Automatic" dependency injection (you have to write a bit of code)
@@ -47,10 +52,11 @@ module.exports =
 
 let ambria = require('../ambria');
 
-//register lodash into Ambria
+// register lodash into Ambria
 ambria.module('lodash', require('lodash'));
 
-//just call require and this module will be registered into ambria with all of his dependencies injected
+// just call require and this module will be registered into ambria 
+// with all of his dependencies injected
 require('./ressource/one.module')
 
 ```
@@ -71,7 +77,8 @@ ambria
 
 Register a module with dependencies (auto binding) : 
 ```javascript
-//dependencyOne and dependencyTwo will be found by their name from already registered module list, and injected
+// dependencyOne and dependencyTwo will be found by their name 
+// from already registered module list, and injected into myModule
 ambria.module('myModule', [function myModuleFunction(dependencyOne, dependencyTwo){...}]);
 ```
 
