@@ -61,7 +61,12 @@ Ambria is based on a unique function "module". which return a loaded module. It 
 Register a module which has some dependencies :  
 ```javascript
 //we asume that dependencyOne and dependencyTwo has already been registered.
-ambria.module('myModule', ['dependencyOne', 'dependencyTwo', function myModuleFunction(dependencyOne, dependencyTwo){...}]);
+ambria
+    .module('myModule', 
+    [
+        'dependencyOne', 'dependencyTwo', 
+        function myModuleFunction(dependencyOne, dependencyTwo){...}
+    ]);
 ```
 
 Register a module with dependencies (auto binding) : 
