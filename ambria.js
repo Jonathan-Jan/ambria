@@ -67,7 +67,12 @@ function mod(name, moduleSkeleton) {
 
         let module = modules[name];
         if (!module) {
-            missing.push(name);
+            try {
+                module = require(name);
+            }
+            catch(err){
+                missing.push(name);
+            }
         }
         params.push(module);
     });
@@ -140,7 +145,7 @@ function unregisterModule(name) {
     delete modules[name];
 }
 
-module.exports = {
-    module:mod,
-    unregisterModule:unregisterModule,
+module.exports = new function() {
+    this.module = mod;
+    this.unregisterModule = unregisterModule;
 };

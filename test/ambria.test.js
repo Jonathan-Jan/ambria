@@ -65,19 +65,31 @@ describe('ambria', function() {
         })
     });
 
+    describe('#inject()', function () {
+        it('auto injection test', function () {
+            let res = true;
+            try {
+                require('./ressource/one.module');
+            } catch(err){
+                res = false;
+            }
+            assert(res);
+        });
+    });
+
     describe('#inject() Error', function () {
         it('lazy injection test', function () {
             let res = false;
             let missing = [];
             try {
-                require('./ressource/one.module');
+                require('./ressource/two.module');
             } catch(err){
                 res = true;
                 missing = err.missing;
             }
             assert(res);
             assert(missing);
-            assert.deepEqual(missing[0], 'lodash');
+            assert.deepEqual(missing[0], 'one');
         });
     });
 });
