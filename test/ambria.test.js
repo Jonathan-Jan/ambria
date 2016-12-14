@@ -92,4 +92,17 @@ describe('ambria', function() {
             assert.deepEqual(missing[0], 'one');
         });
     });
+
+    describe('#inject() Error', function () {
+        it('disable strict mod (allow missing dependency)', function () {
+            let res = true;
+            try {
+                ambria.strict(false);
+                require('./ressource/two.module');
+            } catch(err){
+                res = false;
+            }
+            assert(res);
+        });
+    });
 });

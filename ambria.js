@@ -8,6 +8,12 @@ let modules = {};
 let lodash = require('lodash');
 
 /**
+ * throw an error if there is a missing dependency
+ * @type {boolean}
+ */
+let strictOpt = true;
+
+/**
  * Two way to call this function.
  * first :
  *      paramter one : name
@@ -21,6 +27,15 @@ function register() {
     }
     else if (arguments.length == 2) {
         registerModule(arguments[0], arguments[1]);
+    }
+}
+
+function strict(value) {
+    strictOpt = value;
+
+    return {
+        module:mod,
+        strict:strict
     }
 }
 
@@ -77,7 +92,7 @@ function mod(name, moduleSkeleton) {
         params.push(module);
     });
 
-    if (missing.length > 0) {
+    if (missing.length > 0 && strictOpt) {
         let err = new Error("Missing dependencies : " + missing.join(" "));
         err.missing = missing;
         throw err;
@@ -98,11 +113,13 @@ function createChain(name, registeredModule) {
             module: mod,
             get: function() {
                 return registeredModule;
-            }
+            },
+            strict:strict
         };
     }
     else {
         registeredModule.module = mod;
+        registeredModule.strict = strict;
         return registeredModule;
     }
 }
@@ -148,4 +165,6 @@ function unregisterModule(name) {
 module.exports = new function() {
     this.module = mod;
     this.unregisterModule = unregisterModule;
+
+    this.strict = strict;
 };
